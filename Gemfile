@@ -10,7 +10,8 @@ gem 'rails', '~> 5.1.2'
 group :production do
 
 #Use pg as the production database for Active Record
-  gem 'pg' end
+  gem 'pg'
+end
 
 group :development do
 
@@ -51,3 +52,5 @@ end
 gem 'bootstrap-sass'
 
 gem 'devise'
+
+gem 'coffee-rails'
