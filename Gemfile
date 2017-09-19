@@ -39,19 +39,26 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'thor', '0.19.1'
+gem 'auto_html'
+gem 'acts_as_votable'
+gem 'faker'
 
+#design
+gem 'font-awesome-rails'
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
+gem 'normalize-rails'
 group :development do 
   gem 'listen', '~> 3.0.5' 
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
-  gem 'rails-controller-testing'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'faker'
 end
 
 gem 'bootstrap-sass'
@@ -61,3 +68,5 @@ gem 'devise'
 gem 'coffee-rails'
 
 gem 'pundit'
+
+gem 'sdoc', group: :doc
