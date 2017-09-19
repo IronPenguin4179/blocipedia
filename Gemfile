@@ -54,3 +54,5 @@ gem 'bootstrap-sass'
 gem 'devise'
 
 gem 'coffee-rails'
+
+gem 'pundit'
