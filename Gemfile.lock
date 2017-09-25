@@ -241,6 +241,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   acts_as_votable
   auto_html
   bootstrap-sass

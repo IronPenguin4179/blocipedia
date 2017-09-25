@@ -70,3 +70,5 @@ gem 'coffee-rails'
 gem 'pundit'
 
 gem 'sdoc', group: :doc
+
+gem 'actionmailer'
