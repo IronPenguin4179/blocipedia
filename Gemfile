@@ -72,3 +72,7 @@ gem 'pundit'
 gem 'sdoc', group: :doc
 
 gem 'actionmailer'
+
+gem 'stripe'
+
+gem 'figaro', '1.0'

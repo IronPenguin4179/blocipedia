@@ -5,6 +5,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize User
   end
 
   def new
@@ -15,6 +16,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.user = current_user
+    @wiki.private = params[:wiki][:private]
     
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -27,6 +30,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize User
   end
   
   def update
@@ -41,6 +45,7 @@ class WikisController < ApplicationController
       flash.now[:alert] = "There was an error saving the wiki. Please try again."
       render :edit
     end
+    authorize User
   end
   
   def destroy
@@ -53,5 +58,6 @@ class WikisController < ApplicationController
       flash.now[:alert] = "There was an error deleting the wiki."
       render :show
     end
+    authorize User
   end
 end

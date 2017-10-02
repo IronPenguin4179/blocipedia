@@ -1,2 +1,12 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+
+<h1>Links</h1>
+<ul>
+  <li><%= current_user.role %></li>
+  <li><%= link_to 'Wikis', wikis_path %></li>
+  <li><%= link_to 'New Wiki', new_wiki_path %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to 'Upgrade', new_charge_path %></li>
+  <% end %>
+</ul>
