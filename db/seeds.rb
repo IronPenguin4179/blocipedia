@@ -1,20 +1,20 @@
 require 'random_data'
 require 'faker'
-
-50.times do
-  Wiki.create!(
-    title:  RandomData.random_sentence,
-    body:   RandomData.random_paragraph,
-    private: false
-  )
-end
-
 50.times do
   User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
 end
+
+50.times do
+  Wiki.create!(
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph,
+    user_id: User.all.sample.id
+  )
+end
+
 
 User.create!(
   email: 'admin@example.com',
