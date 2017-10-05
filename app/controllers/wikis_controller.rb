@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -15,7 +15,6 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.user = current_user
     @wiki.private = params[:wiki][:private]
     
     if @wiki.save

@@ -1,6 +1,5 @@
  <h1>All Wikis</h1>
  <% @wikis.each do |wiki| %>
-   <% if wiki.private == false  %>
    <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
@@ -10,15 +9,4 @@
        <h4><%= wiki.private %></h4>
      </div>
    </div>
-   <% elsif current_user.admin? || current_user.id == wiki.user_id %>
-    <div class="media">
-     <div class="media-body">
-       <h4 class="media-heading">
-        <%= link_to wiki.title, wiki %>
-        <%= current_user.id%>
-        
-        </h4>
-        </div>
-        </div>
-        <% end %>
  <% end %>
