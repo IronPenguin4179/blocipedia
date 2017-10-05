@@ -10,7 +10,6 @@ class WikiPolicy
     end
     
     def show?
-        @current_user.admin? || @current_user == @user
     end
     
     def update?

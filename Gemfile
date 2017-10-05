@@ -76,3 +76,5 @@ gem 'actionmailer'
 gem 'stripe'
 
 gem 'figaro', '1.0'
+
+gem 'redcarpet'

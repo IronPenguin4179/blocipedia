@@ -1,6 +1,5 @@
 class ChargesController < ApplicationController
   def create
-    @amount = 500
   # Creates a Stripe Customer object, for associating 
   # with the charge
    
@@ -8,7 +7,6 @@ class ChargesController < ApplicationController
       email: params[:stripeEmail],
       card: params[:stripeToken]
     )
-  puts customer
   # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, #Note -- this is NOT the user_id in your app
@@ -17,10 +15,9 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
   
-  puts charge
     change_account()
     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-    redirect_to user_path(current_user) # or wherever
+    redirect_to root_path # or wherever
   
   # Stripe will send back CardErrors, with friendly messages
   # when something goes wrong.
