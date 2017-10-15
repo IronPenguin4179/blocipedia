@@ -10,11 +10,12 @@ class ChargesController < ApplicationController
   # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, #Note -- this is NOT the user_id in your app
-      amount: @amount,
+      amount: Amount.default,
       description: "BigMoney Membership - #{current_user.email}",
       currency: 'usd'
     )
   
+    current_user.stripe_id = customer.id
     change_account()
     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
     redirect_to root_path # or wherever
@@ -37,6 +38,18 @@ class ChargesController < ApplicationController
       }
   end
 
+  def destroy
+    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    
+    if customer.delete
+      change_account()
+      flash[:notice] =  current_user.role
+      redirect_to root_path
+    else
+      flash[:alert] = "Something went wrong. Please try again."
+      redirect_to new_charge_path
+    end
+  end
   
   class Amount
     @default_amount = 15_00
@@ -46,7 +59,7 @@ class ChargesController < ApplicationController
   end
   
   def change_account
-    if current_user.update(role: 0)
+    if current_user.role == "user"
       current_user.update(role: 1)
     else
       current_user.update(role: 0)

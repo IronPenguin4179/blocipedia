@@ -10,5 +10,5 @@
   <% end %>
 <% else %>
     <h4>You already have an upgraded account!</h4>
-    <button>Downgrade account</button>
+  <%= link_to "Downgrade account", @charge, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to do this?"}%>
 <% end %>
